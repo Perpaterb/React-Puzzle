@@ -17,7 +17,7 @@ const DragBox = () => {
   return (
     <animated.div
       {...bind()}
-      style={{backgroundColor: "#44014c", width: "100px", height: "100px", transform: to([pos, angle], ([x, y], a) => `translate3d(${x}px,${y}px,0) rotate(${a}rad)`) }}
+      style={{backgroundColor: "#44014c", width: "150px", height: "150px", transform: to([pos, angle], ([x, y], a) => `translate3d(${x}px,${y}px,0) rotate(${a}rad)`) }}
     />
   )
 }
