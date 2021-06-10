@@ -1,8 +1,7 @@
 import './App.css';
 import React, {useState} from 'react';
-import PuzzleDisplay from './components/PuzzleDisplay'
+import DragBox from './components/DragBox';
 
-import Draggable from './components/Draggable';
 
 function App() {
   const mainStyles = {
@@ -11,8 +10,8 @@ function App() {
     width: "100px"
   }
   return (
-    <div style={mainStyles}>
-      <PuzzleDisplay></PuzzleDisplay>
+    <div>
+       <DragBox></DragBox>
     </div>
   );
 }
