@@ -19,7 +19,7 @@ function App() {
         <DragBox></DragBox>
         <DragBox></DragBox>
         <DragBox></DragBox>
-        <Gate style={{backgroundColor: "#ffffff", zIndex:"-1"}}></Gate>
+        <Gate style={{backgroundColor: "#ffffff", zIndex:"-1", bottom: "200px"}}></Gate>
       </FlexContainer>
     </div>
   );
