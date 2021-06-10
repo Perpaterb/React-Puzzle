@@ -1,5 +1,6 @@
 import './App.css';
 import React, {useState} from 'react';
+import PuzzleDisplay from './components/PuzzleDisplay'
 
 import Draggable from './components/Draggable';
 
@@ -11,7 +12,7 @@ function App() {
   }
   return (
     <div style={mainStyles}>
-      <Draggable></Draggable>
+      <PuzzleDisplay></PuzzleDisplay>
     </div>
   );
 }
