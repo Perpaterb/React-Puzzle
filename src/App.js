@@ -16,9 +16,11 @@ function App() {
       <FlexContainer>      
         <Gate style={{backgroundColor: "#000000"}}></Gate>
         <DragBox></DragBox>
-        <Gate style={{backgroundColor: "#ffffff"}}></Gate>
+        <DragBox></DragBox>
+        <DragBox></DragBox>
+        <DragBox></DragBox>
+        <Gate style={{backgroundColor: "#ffffff", zIndex:"-1"}}></Gate>
       </FlexContainer>
-
     </div>
   );
 }
