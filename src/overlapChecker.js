@@ -4,14 +4,9 @@ const elementArray = [[0,0,'and'],[0,0,'or'],[0,0,'xor'],[0,0,"not"],[300,0,"on"
 
 // each component will run this overlapChecker on move
 function overlapChecker (elementPos) {
+
+    // update elementArray each time a box is moved
         
-    //get array of all components or create array when creating coponents
-    //   console.log(elementArray[0]);
-    //   console.log("name is   ",typeof name);
-    //   console.log("x: ",x, "y: ",y,"  ",name );
-
-    console.log(elementArray)
-
         if (elementPos[2] === 'and') {
             elementArray[0] = [elementPos[0],elementPos[1],elementPos[2]]
         }
@@ -25,15 +20,12 @@ function overlapChecker (elementPos) {
             elementArray[3] = [elementPos[0],elementPos[1],elementPos[2]]
         }
 
+    //check for overlap each time a box is moved
 
-
-
-    //elementArray.push(elem)
-
-    //check for overlap
-    // const OverlappingComps = []
+    // const overLappingeLement = []
+    
     // for (let i = 0; i < elementArray.length; i++) {
-    //     const boxBounds1 = elementArray[i].getBoundingClientRect();
+    //     const boxBounds1 = [elementArray[i][0],elementArray[i][1],elementArray[i][0]+100,elementArray[i][1]+100]
     //     for (let a = 0; a < elementArray.length; a++) {
     //         if (a !== i ){
     //         const boxBounds2 = elementArray[b].getBoundingClientRect();

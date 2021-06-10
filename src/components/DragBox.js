@@ -1,7 +1,6 @@
-import React, { render, useEffect, useState } from "react"
-import { useSpring, to, animated, config } from 'react-spring'
+import React, {useEffect, useState } from "react"
+import { animated } from 'react-spring'
 import overlapChecker from '../overlapChecker'
-import { scale, dist } from 'vec-la'
 import { useDrag } from 'react-use-gesture'
 
 const DragBox = (props) => {
@@ -18,9 +17,15 @@ const DragBox = (props) => {
           ...state,
           x: props.x + x,
           y: props.y + y,
+          on: true,
         }));
     },
   )
+
+  useEffect(() => {
+    let elementPos = [state.x,state.y,props.name]
+    overlapChecker(elementPos)
+  });
 
   useEffect(() => {
     if(state.on === true) {
@@ -34,9 +39,7 @@ const DragBox = (props) => {
           colour:"#44014c"
         }));
     }
-    let elementPos = [state.x,state.y,props.name]
-    overlapChecker(elementPos)
-  },);
+  },[state.on]);
 
   return (
     <animated.div
