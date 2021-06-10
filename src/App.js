@@ -6,11 +6,7 @@ import FlexContainer from './components/styled-components/FlexContainer'
 
 
 function App() {
-  const mainStyles = {
-    backgroundColor: "red",
-    height: "100px",
-    width: "100px"
-  }
+  
   return (
     <div>
       <FlexContainer>      
