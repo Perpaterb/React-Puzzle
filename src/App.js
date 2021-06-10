@@ -1,7 +1,6 @@
 import './App.css';
 import React, {useState} from 'react';
-
-import Draggable from './components/Draggable';
+import DragBox from './components/DragBox';
 
 function App() {
   const mainStyles = {
@@ -10,8 +9,8 @@ function App() {
     width: "100px"
   }
   return (
-    <div style={mainStyles}>
-      <Draggable></Draggable>
+    <div>
+       <DragBox></DragBox>
     </div>
   );
 }
