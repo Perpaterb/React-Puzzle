@@ -5,26 +5,37 @@ import { useDrag } from 'react-use-gesture'
 
 const DragBox = (props) => {
     const [state, setState] = useState({
-        on : false,
+        on : props.areYouOn,
+        words: "",
         x : props.x, 
         y : props.y,
         colour: "#44014c",
+        text:"",
     });
 
   const bind = useDrag(({ args: [originalIndex], offset: [x, y] }) => {
-
+    
     setState(state => ({
           ...state,
           x: props.x + x,
           y: props.y + y,
-          on: true,
         }));
     },
   )
 
   useEffect(() => {
-    let elementPos = [state.x,state.y,props.name]
-    overlapChecker(elementPos)
+    let elementDetails = [state.x, state.y, props.name, state.on]
+    props.updateDetails(elementDetails)
+
+
+    let onTester = overlapChecker(elementDetails) //old need to be replaced
+    if (onTester !== state.on) {
+      setState(state => ({
+        ...state,
+        on: onTester,
+      }));
+    }
+
   });
 
   useEffect(() => {
@@ -45,7 +56,21 @@ const DragBox = (props) => {
     <animated.div
       {...bind()}
       style={{backgroundColor: state.colour , width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute',}}
-    />
+      >
+      <div>
+        {(()=>{
+          if (state.words !== props.name) {
+            return (
+              <div>
+                <input type="text" id="fname" name="fname" style={{ width: "30px", backgroundColor: state.colour}}/>
+              </div>
+            )
+          } else {
+            return (<div/>)
+          }
+        })()}
+      </div>
+    </animated.div>
   )
 };
 
