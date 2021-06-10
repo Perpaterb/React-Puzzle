@@ -10,12 +10,12 @@ function App() {
   return (
     <div>
       <FlexContainer>      
-        <Gate style={{backgroundColor: "#000000"}}></Gate>
-        <DragBox></DragBox>
-        <DragBox></DragBox>
-        <DragBox></DragBox>
-        <DragBox></DragBox>
-        <Gate style={{backgroundColor: "#ffffff", zIndex:"-1", bottom: "200px"}}></Gate>
+        <Gate style={{backgroundColor: "#000000",left : 300, top: 600}}></Gate>
+        <Gate style={{backgroundColor: "#ffffff",left : 300, top: 0, zIndex:"-1"}}></Gate>
+        <DragBox name="and" x={400} y={200}></DragBox>
+        <DragBox name="not" x={600} y={300}></DragBox>
+        <DragBox name="or"  x={700} y={400}></DragBox>
+        <DragBox name="xor" x={800} y={500}></DragBox>
       </FlexContainer>
     </div>
   );
