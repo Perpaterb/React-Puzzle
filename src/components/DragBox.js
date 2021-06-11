@@ -11,6 +11,7 @@ const DragBox = (props) => {
         y : props.y,
         colour: "#44014c",
         text:"",
+        opacity: 1
     });
 
   const bind = useDrag(({ args: [originalIndex], offset: [x, y] }) => {
@@ -38,6 +39,7 @@ const DragBox = (props) => {
 
   });
 
+
   const [inputField, setInputField] = useState();
   const handleChange = (event) => {
     setInputField(inputField => {
@@ -52,24 +54,75 @@ const DragBox = (props) => {
     }))
   };
 
+let colors = [["#ffffb5", "#f4ff2b"], ["#fbe4ff", "#f148f7"], ["#c4faf8", "#4287f5"], ["#dbffd6", "#3bff3b"]]
+  
   useEffect(() => {
-    if(state.on === true) {
+    if (props.name === "and") {
+      if(state.on === true) {
         setState(state => ({
           ...state,
-          colour:"#dbffd6"
+          colour: colors[0][1],
+          opacity: 0.5
         }));
     }else{
         setState(state => ({
           ...state,
-          colour:"#44014c"
+          colour: colors[0][0],
+          opacity: 1
         }));
     }
+  }
+    if (props.name === "or") {
+      if(state.on === true) {
+        setState(state => ({
+          ...state,
+          colour: colors[1][1],
+          opacity: 0.5
+        }));
+    }else{
+        setState(state => ({
+          ...state,
+          colour: colors[1][0],
+          opacity: 1
+        }));
+    }
+  }
+    if (props.name === "xor") {
+      if(state.on === true) {
+        setState(state => ({
+          ...state,
+          colour: colors[2][1],
+          opacity: 0.5
+        }));
+    }else{
+        setState(state => ({
+          ...state,
+          colour: colors[2][0],
+          opacity: 1
+        }));
+    }
+  }
+    if (props.name === "not") {
+      if(state.on === true) {
+        setState(state => ({
+          ...state,
+          colour: colors[3][1],
+          opacity: 0.5
+        }));
+    }else{
+        setState(state => ({
+          ...state,
+          colour: colors[3][0],
+          opacity: 1
+        }));
+    }
+  }
   },[state.on]);
 
   return (
     <animated.div
       {...bind()}
-      style={{backgroundColor: state.colour, width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute',}}
+      style={{backgroundColor: state.colour , width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute', opacity: state.opacity}}
       >
       <div>
         {(()=>{
