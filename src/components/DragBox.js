@@ -50,7 +50,7 @@ const DragBox = (props) => {
     })
     setState(state => ({
       ...state,
-      words: event.target.value,
+      words: event.target.value.toLowerCase(),
     }))
   };
 
