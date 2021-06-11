@@ -62,13 +62,13 @@ const DragBox = (props) => {
         setState(state => ({
           ...state,
           colour: colors[0][1],
-          opacity: 0.5
+          opacity: 0.7
         }));
     }else{
         setState(state => ({
           ...state,
           colour: colors[0][0],
-          opacity: 1
+          opacity: 0.3
         }));
     }
   }
@@ -77,13 +77,13 @@ const DragBox = (props) => {
         setState(state => ({
           ...state,
           colour: colors[1][1],
-          opacity: 0.5
+          opacity: 0.7
         }));
     }else{
         setState(state => ({
           ...state,
           colour: colors[1][0],
-          opacity: 1
+          opacity: 0.3
         }));
     }
   }
@@ -92,13 +92,13 @@ const DragBox = (props) => {
         setState(state => ({
           ...state,
           colour: colors[2][1],
-          opacity: 0.5
+          opacity: 0.7
         }));
     }else{
         setState(state => ({
           ...state,
           colour: colors[2][0],
-          opacity: 1
+          opacity: 0.3 
         }));
     }
   }
@@ -107,13 +107,13 @@ const DragBox = (props) => {
         setState(state => ({
           ...state,
           colour: colors[3][1],
-          opacity: 0.5
+          opacity: 0.7
         }));
     }else{
         setState(state => ({
           ...state,
           colour: colors[3][0],
-          opacity: 1
+          opacity: 0.3
         }));
     }
   }
@@ -122,7 +122,7 @@ const DragBox = (props) => {
   return (
     <animated.div
       {...bind()}
-      style={{backgroundColor: state.colour , width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute', opacity: state.opacity, display: "flex", justifyContent: "center", alignItems: "center"}}
+      style={{border: " 2px solid black", backgroundColor: state.colour , width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute', opacity: state.opacity, display: "flex", justifyContent: "center", alignItems: "center"}}
       >
       <div className="input-field">
         {(()=>{
