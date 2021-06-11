@@ -1,24 +1,26 @@
 
 
-const elementArray = [[400,300,'and',false],[600,300,'or',false],[800,300,'xor',false],[1000,300,"not",false],[400,150,"on",true],[400,410,"off",false]]
+//const elementArray = [[400,300,'and',false],[600,300,'or',false],[800,300,'xor',false],[1000,300,"not",false],[400,150,"on",true],[400,410,"off",false]]
 
 // each component will run this overlapChecker on move
-function overlapChecker (elementPos) {
+function overlapChecker (passedElementDetails) {
+
+    let elementArray = passedElementDetails
 
     // update elementArray each time a box is moved
         
-        if (elementPos[2] === 'and') {
-            elementArray[0] = [elementPos[0],elementPos[1],elementPos[2],elementPos[3]]
-        }
-        if (elementPos[2] === 'or') {
-            elementArray[1] = [elementPos[0],elementPos[1],elementPos[2],elementPos[3]]
-        }
-        if (elementPos[2] === 'xor') {
-            elementArray[2] = [elementPos[0],elementPos[1],elementPos[2],elementPos[3]]
-        }
-        if (elementPos[2] === 'not') {
-            elementArray[3] = [elementPos[0],elementPos[1],elementPos[2],elementPos[3]]
-        }
+        // if (elementDetails[2] === 'and') {
+        //     elementArray[0] = elementDetails
+        // }
+        // if (elementDetails[2] === 'or') {
+        //     elementArray[1] = elementDetails
+        // }
+        // if (elementDetails[2] === 'xor') {
+        //     elementArray[2] = elementDetails
+        // }
+        // if (elementDetails[2] === 'not') {
+        //     elementArray[3] = elementDetails
+        // }
 
     //check for overlap each time a box is moved
 
@@ -78,7 +80,7 @@ function overlapChecker (elementPos) {
 
 
     // return and logic
-    if (elementPos[2] === 'and') {
+    //if (elementDetails[2] === 'and') {
         let andReturned = false
         for (let i = 0; i < overappingElement.length ; i++) {
             if (overappingElement[i][0] ==='and') {
@@ -95,17 +97,18 @@ function overlapChecker (elementPos) {
                     const allEqual = array => array.every( v => v === array[0])
                     if (allEqual(onOffArray) === true) {
                         if (onOffArray[0] === true) {
-                            return true
+                            andReturned = true
+                            elementArray[0][3] = true
                         }
                     }
                 }
             }     
         }
-        if (andReturned === false) {return false}
-    }
+        if (andReturned === false) {elementArray[0][3] = false}
+    //}
 
     // return or logic
-    if (elementPos[2] === 'or') {
+    //if (elementDetails[2] === 'or') {
         let orReturned = false
         for (let i = 0; i < overappingElement.length ; i++) {
             if (overappingElement[i][0] === 'or') {
@@ -116,7 +119,7 @@ function overlapChecker (elementPos) {
                             if (array[i] === elementArray[a][2]) {
                                 if (elementArray[a][3] === true) {
                                     orReturned = true
-                                    return true
+                                    elementArray[1][3] = true
                                 }
                             }
                         }
@@ -124,12 +127,12 @@ function overlapChecker (elementPos) {
                 }
             }     
         }
-        if (orReturned === false) {return false}
-    }
+        if (orReturned === false) {elementArray[1][3] = false}
+    //}
     
 
     // return xor logic odd number of truths more
-    if (elementPos[2] === 'xor') {
+    // (elementDetails[2] === 'xor') {
         let xorReturned = false
         for (let i = 0; i < overappingElement.length ; i++) {
             if (overappingElement[i][0] ==='xor') {
@@ -146,16 +149,17 @@ function overlapChecker (elementPos) {
                         }
                     }
                     if ((onOffArray.length % 2) === 1) {
-                        return true
+                        xorReturned = true
+                        elementArray[2][3] = true
                     }
                 }
             }     
         }
-        if (xorReturned === false) {return false}
-    }
+        if (xorReturned === false) {elementArray[2][3] = false}
+    //}
 
     // return not logic
-    if (elementPos[2] === 'not') {
+    //if (elementDetails[2] === 'not') {
         let notReturned = false
         for (let i = 0; i < overappingElement.length ; i++) {
             if (overappingElement[i][0] ==='not') {
@@ -171,14 +175,15 @@ function overlapChecker (elementPos) {
                 const allEqual = array => array.every( v => v === array[0])
                 if (allEqual(onOffArray) === true) {
                     if (onOffArray[0] === false) {
-                        return true
+                        notReturned = true
+                        elementArray[3][3] = true
                     }
                 }
             }     
         }
-        if (notReturned === false) {return false}
-    }
-
+        if (notReturned === false) {elementArray[3][3] = false}
+    //}
+    return elementArray
 };
 
 export default overlapChecker;

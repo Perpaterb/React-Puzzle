@@ -13,6 +13,13 @@ const DragBox = (props) => {
         text:"",
     });
 
+  if (props.areYouOn !== state.on){
+      setState(state => ({
+          ...state,
+          on: props.areYouOn,
+      }));
+  }
+
   const bind = useDrag(({ args: [originalIndex], offset: [x, y] }) => {
     
     setState(state => ({
@@ -24,17 +31,9 @@ const DragBox = (props) => {
   )
 
   useEffect(() => {
+
     let elementDetails = [state.x, state.y, props.name, state.on]
     props.updateDetails(elementDetails)
-
-
-    let onTester = overlapChecker(elementDetails) //old need to be replaced
-    if (onTester !== state.on) {
-      setState(state => ({
-        ...state,
-        on: onTester,
-      }));
-    }
 
   });
 
