@@ -11,6 +11,7 @@ const DragBox = (props) => {
         y : props.y,
         colour: "#44014c",
         text:"",
+        opacity: 1
     });
 
   const bind = useDrag(({ args: [originalIndex], offset: [x, y] }) => {
@@ -45,12 +46,14 @@ const DragBox = (props) => {
       if(state.on === true) {
         setState(state => ({
           ...state,
-          colour: colors[0][1]
+          colour: colors[0][1],
+          opacity: 0.5
         }));
     }else{
         setState(state => ({
           ...state,
-          colour: colors[0][0]
+          colour: colors[0][0],
+          opacity: 1
         }));
     }
   }
@@ -58,12 +61,14 @@ const DragBox = (props) => {
       if(state.on === true) {
         setState(state => ({
           ...state,
-          colour: colors[1][1]
+          colour: colors[1][1],
+          opacity: 0.5
         }));
     }else{
         setState(state => ({
           ...state,
-          colour: colors[1][0]
+          colour: colors[1][0],
+          opacity: 1
         }));
     }
   }
@@ -71,12 +76,14 @@ const DragBox = (props) => {
       if(state.on === true) {
         setState(state => ({
           ...state,
-          colour: colors[2][1]
+          colour: colors[2][1],
+          opacity: 0.5
         }));
     }else{
         setState(state => ({
           ...state,
-          colour: colors[2][0]
+          colour: colors[2][0],
+          opacity: 1
         }));
     }
   }
@@ -84,12 +91,14 @@ const DragBox = (props) => {
       if(state.on === true) {
         setState(state => ({
           ...state,
-          colour: colors[3][1]
+          colour: colors[3][1],
+          opacity: 0.5
         }));
     }else{
         setState(state => ({
           ...state,
-          colour: colors[3][0]
+          colour: colors[3][0],
+          opacity: 1
         }));
     }
   }
@@ -98,7 +107,7 @@ const DragBox = (props) => {
   return (
     <animated.div
       {...bind()}
-      style={{backgroundColor: state.colour , width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute',}}
+      style={{backgroundColor: state.colour , width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute', opacity: state.opacity}}
       >
       <div>
         {(()=>{
