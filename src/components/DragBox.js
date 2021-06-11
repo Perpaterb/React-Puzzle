@@ -39,8 +39,23 @@ const DragBox = (props) => {
 
   });
 
-  let colors = [["#ffffb5", "#f4ff2b"], ["#fbe4ff", "#f148f7"], ["#c4faf8", "#4287f5"], ["#dbffd6", "#3bff3b"]]
 
+  const [inputField, setInputField] = useState();
+  const handleChange = (event) => {
+    setInputField(inputField => {
+      return {
+        ...inputField,
+        [event.target.name]: event.target.value
+      }
+    })
+    setState(state => ({
+      ...state,
+      words: event.target.value,
+    }))
+  };
+
+  let colors = [["#ffffb5", "#f4ff2b"], ["#fbe4ff", "#f148f7"], ["#c4faf8", "#4287f5"], ["#dbffd6", "#3bff3b"]]
+  
   useEffect(() => {
     if (props.name === "and") {
       if(state.on === true) {
@@ -113,8 +128,9 @@ const DragBox = (props) => {
         {(()=>{
           if (state.words !== props.name) {
             return (
-              <div >
-                <input type="text" id="fname" name="fname" style={{ width: "30px", backgroundColor: state.colour}}/>
+              <div>
+                <input type="text" name={props.name} onChange={handleChange}
+                style={{ width: "30px", backgroundColor: state.colour}}/>
               </div>
             )
           } else {
