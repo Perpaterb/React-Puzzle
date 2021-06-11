@@ -46,9 +46,11 @@ const DragBox = (props) => {
         [event.target.name]: event.target.value
       }
     })
+    setState(state => ({
+      ...state,
+      words: event.target.value,
+    }))
   };
-
-  console.log(inputField);
 
   useEffect(() => {
     if(state.on === true) {
@@ -74,7 +76,7 @@ const DragBox = (props) => {
           if (state.words !== props.name) {
             return (
               <div>
-                <input type="text" id="fname" name={props.name} onChange={handleChange}
+                <input type="text" name={props.name} onChange={handleChange}
                 style={{ width: "30px", backgroundColor: state.colour}}/>
               </div>
             )
