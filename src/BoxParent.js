@@ -20,8 +20,8 @@ const BoxParent = (props) => {
 
     return (
         <FlexContainer> 
-            <Gate style={{backgroundColor: "#000000",left : 400, top: 410}}><h1 id="gate1">ON</h1></Gate>
-            <Gate style={{backgroundColor: "#ffffff",left : 400, top: 150, zIndex:"-1"}}><h1 id="gate2">OFF</h1></Gate>
+            <Gate style={{backgroundColor: "#000000",left : 400, top: 410}}><h1 id="gate1">OFF</h1></Gate>
+            <Gate style={{backgroundColor: "#ffffff",left : 400, top: 150, zIndex:"-1"}}><h1 id="gate2">ON</h1></Gate>
             <DragBox name="and" x={400} y={300} areYouOn={state.andBoxOn} updateDetails={UpdateDetails}> </DragBox>
             <DragBox name="not" x={600} y={300} areYouOn={state.notBoxOn} updateDetails={UpdateDetails}> </DragBox>
             <DragBox name="or"  x={800} y={300} areYouOn={state.orBoxOn} updateDetails={UpdateDetails}> </DragBox>
