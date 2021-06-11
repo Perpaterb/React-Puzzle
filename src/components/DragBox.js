@@ -107,13 +107,13 @@ const DragBox = (props) => {
   return (
     <animated.div
       {...bind()}
-      style={{backgroundColor: state.colour , width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute', opacity: state.opacity}}
+      style={{backgroundColor: state.colour , width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute', opacity: state.opacity, display: "flex", justifyContent: "center", alignItems: "center"}}
       >
-      <div>
+      <div className="input-field">
         {(()=>{
           if (state.words !== props.name) {
             return (
-              <div>
+              <div >
                 <input type="text" id="fname" name="fname" style={{ width: "30px", backgroundColor: state.colour}}/>
               </div>
             )
