@@ -134,7 +134,7 @@ const DragBox = (props) => {
               </div>
             )
           } else {
-            return (<div/>)
+            return (<div>{props.name}</div>)
           }
         })()}
       </div>
