@@ -39,13 +39,10 @@ const DragBox = (props) => {
   });
 
   let colors = [["#ffffb5", "#f4ff2b"], ["#fbe4ff", "#f148f7"], ["#c4faf8", "#4287f5"], ["#dbffd6", "#3bff3b"]]
-  let newColorsArray = [["#ffffb5", "#f4ff2b"], ["#fbe4ff", "#f148f7"], ["#c4faf8", "#4287f5"], ["#dbffd6", "#3bff3b"]]
-  let colors1 = ["#ffffb5", "#fbe4ff", "#c4faf8", "#dbffd6"]
-  let colors2 = ["#f4ff2b", "#f148f7", "#4287f5", "#3bff3b"]
-
 
   useEffect(() => {
-    if(state.on === true) {
+    if (props.name === "and") {
+      if(state.on === true) {
         setState(state => ({
           ...state,
           colour: colors[0][1]
@@ -56,6 +53,46 @@ const DragBox = (props) => {
           colour: colors[0][0]
         }));
     }
+  }
+    if (props.name === "or") {
+      if(state.on === true) {
+        setState(state => ({
+          ...state,
+          colour: colors[1][1]
+        }));
+    }else{
+        setState(state => ({
+          ...state,
+          colour: colors[1][0]
+        }));
+    }
+  }
+    if (props.name === "xor") {
+      if(state.on === true) {
+        setState(state => ({
+          ...state,
+          colour: colors[2][1]
+        }));
+    }else{
+        setState(state => ({
+          ...state,
+          colour: colors[2][0]
+        }));
+    }
+  }
+    if (props.name === "not") {
+      if(state.on === true) {
+        setState(state => ({
+          ...state,
+          colour: colors[3][1]
+        }));
+    }else{
+        setState(state => ({
+          ...state,
+          colour: colors[3][0]
+        }));
+    }
+  }
   },[state.on]);
 
   return (
