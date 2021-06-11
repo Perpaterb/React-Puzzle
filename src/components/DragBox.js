@@ -1,6 +1,5 @@
 import React, {useEffect, useState } from "react"
 import { animated } from 'react-spring'
-import overlapChecker from '../overlapChecker'
 import { useDrag } from 'react-use-gesture'
 
 const DragBox = (props) => {
@@ -133,6 +132,7 @@ const DragBox = (props) => {
               </div>
             )
           } else {
+            props.nameIsCorrect(props.name)
             return (<div>{props.name}</div>)
           }
         })()}
