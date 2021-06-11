@@ -38,6 +38,18 @@ const DragBox = (props) => {
 
   });
 
+  const [inputField, setInputField] = useState();
+  const handleChange = (event) => {
+    setInputField(inputField => {
+      return {
+        ...inputField,
+        [event.target.name]: event.target.value
+      }
+    })
+  };
+
+  console.log(inputField);
+
   useEffect(() => {
     if(state.on === true) {
         setState(state => ({
@@ -55,14 +67,15 @@ const DragBox = (props) => {
   return (
     <animated.div
       {...bind()}
-      style={{backgroundColor: state.colour , width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute',}}
+      style={{backgroundColor: state.colour, width: "100px", height: "100px", left:state.x , top: state.y, position: 'absolute',}}
       >
       <div>
         {(()=>{
           if (state.words !== props.name) {
             return (
               <div>
-                <input type="text" id="fname" name="fname" style={{ width: "30px", backgroundColor: state.colour}}/>
+                <input type="text" id="fname" name={props.name} onChange={handleChange}
+                style={{ width: "30px", backgroundColor: state.colour}}/>
               </div>
             )
           } else {
